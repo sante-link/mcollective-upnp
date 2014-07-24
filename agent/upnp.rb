@@ -5,7 +5,7 @@ module MCollective
     class Upnp < RPC::Agent
       action 'add_port_mapping' do
         validate :port, Integer
-        validate :client, :ipv4address
+        validate :client, :ipv4address unless request[:client].nil?
         validate :local_port, Integer
         validate :protocol, ['tcp', 'udp']
         validate :description, String
